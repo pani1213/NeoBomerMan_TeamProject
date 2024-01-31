@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     private int _speed;
     private Rigidbody2D _rigidbody;
-    
+    Vector2 playerDir;
     void Start()
     {
         Player player = GetComponent<Player>();
@@ -14,15 +14,15 @@ public class PlayerMove : MonoBehaviour
 
         _rigidbody = GetComponent<Rigidbody2D>();
     }
-
     void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-
-        Vector2 dir = new Vector2(h, v);
-        dir = dir.normalized;
-
-        _rigidbody.velocity = dir * _speed;
+        playerDir = new Vector2(h, v);
+        playerDir = playerDir.normalized;
+    }
+    private void FixedUpdate()
+    {
+        _rigidbody.velocity = playerDir * _speed;
     }
 }
