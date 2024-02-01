@@ -24,7 +24,8 @@ public class Monster : MonoBehaviour
         if (targetPosition != (Vector2)transform.position)
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         else
-            SearchDirection();        
+            SearchDirection();
+
     }
     private void SearchDirection()
     {
