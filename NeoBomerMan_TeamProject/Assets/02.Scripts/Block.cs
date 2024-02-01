@@ -19,7 +19,6 @@ public class Block : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
     public void MakeItem()
     {
         if (Random.Range(0,5) == 0)     // 20%
