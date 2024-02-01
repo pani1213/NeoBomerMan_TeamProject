@@ -9,7 +9,6 @@ public class PlayerFire : MonoBehaviour
     public BoomController BombPrefab;
     public int BombPower = 1;       // 폭탄 레벨
     public int MaxBombCount = 1;    // 최대 설치 가능 폭탄 개수
-
     Vector2 roundedPlayerPosition;
     // 폭탄 오브젝트 풀링
     public int PoolSize = 10;
@@ -40,6 +39,7 @@ public class PlayerFire : MonoBehaviour
                     break;
                 }
             }
+            //GameManager.instance.boomControllers.Add(bomb);
             bomb.transform.position = roundedPlayerPosition;
             bomb.gameObject.SetActive(true);
             bomb.InIt();

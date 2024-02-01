@@ -13,25 +13,48 @@ public class BoomEffectController : MonoBehaviour
     public Direction mydirection;
     public BlockType blockType = BlockType.none;
     public GameObject destroyBrick = null;
+    public Action action;
 
-    public void InIt( )
+    public bool isfire = false;
+    public void InIt(Action _action = null)
     {
+        myCollider.enabled = true;
+        isfire = false;
         blockType = BlockType.none;
+        if(_action != null)
+            action = _action;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
+        if (action != null)
+        {
+            action();
+            action = null;
+        }
         if (collision.CompareTag("Block"))
         {
             blockType = BlockType.block;
+            
         }
-        else if (collision.CompareTag("Brick"))
+        if (collision.CompareTag("Brick"))
         {
             destroyBrick = collision.gameObject;
             blockType = BlockType.brick;
         }
-        else if (collision.CompareTag("Boom"))
+        if (collision.CompareTag("Boom"))
         {
+            Debug.Log(isfire);
+        }
+        if (collision.CompareTag("Boom")&& isfire)
+        {
+            Debug.Log(0);
+            BoomController bom = collision.GetComponent<BoomController>();
 
+            if (bom != null)
+            {
+                bom.StopAllCoroutines();
+                bom.StartCoroutine(bom.StartBoom(true));
+            }
         }
     }
 }

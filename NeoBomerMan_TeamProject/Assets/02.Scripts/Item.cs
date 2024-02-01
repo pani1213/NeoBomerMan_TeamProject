@@ -28,7 +28,6 @@ public class Item : MonoBehaviour
                     playerFire.BombPower++;
                 Debug.Log(playerFire.BombPower);
             }
-
             else if (IType == ItemType.BombCount)
             {
                 playerFire.MaxBombCount++;
