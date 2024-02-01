@@ -19,6 +19,7 @@ public class BoomController : MonoBehaviour
 
     public WaitForSeconds boomSecond = new WaitForSeconds(1);
     public Dictionary<Direction, DirValue> fireContainer;//= new Dictionary<Direction,DirValue>();
+    public List<BoomController> boomControllers = new List<BoomController>();
     public void InIt()
     {
         fireContainer = new Dictionary<Direction, DirValue>();
@@ -32,10 +33,10 @@ public class BoomController : MonoBehaviour
         for (int i = 0; i < BoomEffectsRight.Count; i++) BoomEffectsRight[i].InIt();
         StartCoroutine(StartBoom());
     }
-
-    public IEnumerator StartBoom()
+    public IEnumerator StartBoom(bool _isNow = false)
     {
-        yield return new WaitForSeconds(2);
+        if (!_isNow)
+            yield return new WaitForSeconds(2);
         SetBoomRange();
         BoomDirectionProcess(Direction.up, BoomEffectsUp);
         BoomDirectionProcess(Direction.down, BoomEffectsDown);
@@ -47,7 +48,7 @@ public class BoomController : MonoBehaviour
     }
     private void BoomDirectionProcess(Direction _direction,List<BoomEffectController> _boomEffecter)
     {
-        Debug.Log($"{_direction},{fireContainer[_direction].fireRange}");
+        //Debug.Log($"{_direction},{fireContainer[_direction].fireRange}");
         for (int i = 0; i < fireContainer[_direction].fireRange; i++)
         {
             _boomEffecter[i].boomparticle.Play();

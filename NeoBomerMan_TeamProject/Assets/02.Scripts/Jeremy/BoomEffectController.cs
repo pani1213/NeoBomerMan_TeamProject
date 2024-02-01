@@ -10,10 +10,10 @@ public class BoomEffectController : MonoBehaviour
     public ParticleSystem boomparticle;
     public BoxCollider2D myCollider;
 
-
     public Direction mydirection;
     public BlockType blockType = BlockType.none;
     public GameObject destroyBrick = null;
+
     public void InIt( )
     {
         blockType = BlockType.none;
@@ -24,10 +24,14 @@ public class BoomEffectController : MonoBehaviour
         {
             blockType = BlockType.block;
         }
-        if (collision.CompareTag("Brick"))
+        else if (collision.CompareTag("Brick"))
         {
             destroyBrick = collision.gameObject;
             blockType = BlockType.brick;
+        }
+        else if (collision.CompareTag("Boom"))
+        {
+
         }
     }
 }
