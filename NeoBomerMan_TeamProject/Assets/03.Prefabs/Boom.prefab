@@ -143,6 +143,7 @@ MonoBehaviour:
   - {fileID: 6567587838750836335}
   - {fileID: 6486812320194778535}
   - {fileID: 3212807722054874418}
+<<<<<<< HEAD
 --- !u!50 &-3921377235624459127
 Rigidbody2D:
   serializedVersion: 4
@@ -215,6 +216,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+=======
+  BombPowerItemPrefab: {fileID: 7642407625254855811, guid: 3f1f9da70ccd3c64bbe7de2c5923419c, type: 3}
+  BombCountItemPrefab: {fileID: 8929806702488714409, guid: 2eebd71eb14b4b24897e830e699246dc, type: 3}
+  SpeedItemPrefab: {fileID: 302745638656182270, guid: d625058ada468dc46a3d584a11bbe81f, type: 3}
+>>>>>>> f3312454fb6bbe1cfbd0325a8dca6030300b149b
 --- !u!1001 &936036278339310274
 PrefabInstance:
   m_ObjectHideFlags: 0
