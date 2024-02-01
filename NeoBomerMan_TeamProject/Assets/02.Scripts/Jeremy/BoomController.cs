@@ -13,6 +13,10 @@ public class BoomController : MonoBehaviour
     public List<BoomEffectController> BoomEffectsLeft;
     public List<BoomEffectController> BoomEffectsRight;
 
+    public GameObject BombPowerItemPrefab;
+    public GameObject BombCountItemPrefab;
+    public GameObject SpeedItemPrefab;
+
     public WaitForSeconds boomSecond = new WaitForSeconds(1);
     public Dictionary<Direction, DirValue> fireContainer;//= new Dictionary<Direction,DirValue>();
     public void InIt()
@@ -52,6 +56,7 @@ public class BoomController : MonoBehaviour
         {
             _boomEffecter[fireContainer[_direction].fireRange].boomparticle.Play();
             Destroy(_boomEffecter[fireContainer[_direction].fireRange].destroyBrick);
+            MakeItem();
         }
     }
     private void SetBoomRange()
@@ -75,6 +80,37 @@ public class BoomController : MonoBehaviour
                 fireContainer[_direction].fireRange = i;
                 break;
             }
+        }
+    }
+    public void MakeItem()
+    {
+        if (UnityEngine.Random.Range(0, 5) == 0)
+        {
+            GameObject item = null;
+
+            int num = UnityEngine.Random.Range(0, 3);
+            switch (num)
+            {
+                case 0:
+                {
+                    item = Instantiate(BombPowerItemPrefab);
+                    break;
+                }                  
+                case 1:
+                {
+                    item = Instantiate(BombCountItemPrefab);
+                    break;
+                }
+                case 2:
+                {
+                    item = Instantiate(SpeedItemPrefab);
+                    break;
+                }
+            }
+            if (item != null)
+            {
+                item.transform.position = this.transform.position;
+            }          
         }
     }
 }
