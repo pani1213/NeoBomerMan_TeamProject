@@ -10,7 +10,6 @@ public class BoomEffectController : MonoBehaviour
     public ParticleSystem boomparticle;
     public BoxCollider2D myCollider;
 
-
     public Direction mydirection;
     public BlockType blockType = BlockType.none;
     public GameObject destroyBrick = null;

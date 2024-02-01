@@ -28,7 +28,6 @@ public class BoomController : MonoBehaviour
         for (int i = 0; i < BoomEffectsRight.Count; i++) BoomEffectsRight[i].InIt();
         StartCoroutine(StartBoom());
     }
-
     public IEnumerator StartBoom()
     {
         yield return new WaitForSeconds(2);

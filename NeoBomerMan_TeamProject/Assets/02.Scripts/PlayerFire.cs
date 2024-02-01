@@ -7,7 +7,6 @@ public class PlayerFire : MonoBehaviour
 {
     [Header("폭탄 프리팹")]
     public BoomController BombPrefab;
-
     public int BombPower = 1;       // 폭탄 레벨
     public int MaxBombCount = 1;    // 최대 설치 가능 폭탄 개수
 
