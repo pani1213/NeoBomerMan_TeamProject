@@ -55,8 +55,8 @@ public class BoomController : MonoBehaviour
         if (fireContainer[_direction].blockType == BlockType.brick)
         {
             _boomEffecter[fireContainer[_direction].fireRange].boomparticle.Play();
-            Destroy(_boomEffecter[fireContainer[_direction].fireRange].destroyBrick);
-            MakeItem();
+            MakeItem(_boomEffecter[fireContainer[_direction].fireRange].destroyBrick);
+            Destroy(_boomEffecter[fireContainer[_direction].fireRange].destroyBrick);       
         }
     }
     private void SetBoomRange()
@@ -82,7 +82,7 @@ public class BoomController : MonoBehaviour
             }
         }
     }
-    public void MakeItem()
+    public void MakeItem(GameObject block)
     {
         if (UnityEngine.Random.Range(0, 5) == 0)
         {
@@ -109,7 +109,7 @@ public class BoomController : MonoBehaviour
             }
             if (item != null)
             {
-                item.transform.position = this.transform.position;
+                item.transform.position = block.transform.position;
             }          
         }
     }
