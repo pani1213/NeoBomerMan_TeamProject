@@ -12,27 +12,34 @@ public enum ItemType
 public class Item : MonoBehaviour
 {
     public ItemType IType;
+    PlayerFire playerFire;
+    PlayerMove playerMove;
 
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        PlayerFire playerFire = otherCollider.GetComponent<PlayerFire>();
-        Player player = otherCollider.GetComponent<Player>();
-
-        if (IType == ItemType.BombPower)
+        if (otherCollider.CompareTag("Player"))
         {
-            playerFire.BombPower++;
-        }
+            playerFire = otherCollider.GetComponent<PlayerFire>();
+            playerMove = otherCollider.GetComponent<PlayerMove>();
 
-        else if (IType == ItemType.BombCount)
-        {
-            playerFire.MaxBombCount++;
-        }
+            if (IType == ItemType.BombPower)
+            {
+                playerFire.BombPower++;
+                Debug.Log(playerFire.BombPower);
+            }
 
-        else if (IType == ItemType.Speed)
-        {
-            player.PlayerSpeed++;
-        }
+            else if (IType == ItemType.BombCount)
+            {
+                playerFire.MaxBombCount++;
+                Debug.Log(playerFire.MaxBombCount);
+            }
 
-        Destroy(this.gameObject);
+            else if (IType == ItemType.Speed)
+            {
+                playerMove._speed++;
+                Debug.Log(playerMove._speed);
+            }
+            Destroy(this.gameObject);
+        }
     }
 }

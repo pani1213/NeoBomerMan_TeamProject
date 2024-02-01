@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3359f73ec4326a44e9b2fe88680d2aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BombPrefab: {fileID: 0}
+  BombPrefab: {fileID: 2808653225414547410, guid: c712629230b14f141a429e596fa81c19, type: 3}
   BombPower: 1
   MaxBombCount: 1
   PoolSize: 10

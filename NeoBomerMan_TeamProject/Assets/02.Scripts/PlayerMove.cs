@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    private int _speed;
+    private int defaultSpeed = 200;
+    public int _speed= 1;
     private Rigidbody2D _rigidbody;
     Vector2 playerDir;
     void Start()
     {
-        Player player = GetComponent<Player>();
-        _speed = player.PlayerSpeed;
-
+        //Player player = GetComponent<Player>();
+        //_speed = player.PlayerSpeed;
         _rigidbody = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -23,6 +23,6 @@ public class PlayerMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        _rigidbody.velocity = playerDir * _speed;
+        _rigidbody.velocity = playerDir * defaultSpeed * _speed * Time.deltaTime;
     }
 }
