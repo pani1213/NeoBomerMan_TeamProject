@@ -8,13 +8,13 @@ public enum ItemType
     BombCount = 1,
     Speed = 2
 }
-
 public class Item : MonoBehaviour
 {
     public ItemType IType;
     PlayerFire playerFire;
     PlayerMove playerMove;
-
+    private const int boomMaxCount = 5, speedMaxCount = 3;
+    
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
         if (otherCollider.CompareTag("Player"))
@@ -24,7 +24,8 @@ public class Item : MonoBehaviour
 
             if (IType == ItemType.BombPower)
             {
-                playerFire.BombPower++;
+                if (playerFire.BombPower < boomMaxCount)
+                    playerFire.BombPower++;
                 Debug.Log(playerFire.BombPower);
             }
 
@@ -36,6 +37,7 @@ public class Item : MonoBehaviour
 
             else if (IType == ItemType.Speed)
             {
+                if(playerMove._speed < speedMaxCount)
                 playerMove._speed++;
                 Debug.Log(playerMove._speed);
             }
