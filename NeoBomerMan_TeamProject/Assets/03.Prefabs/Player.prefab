@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 8971043707055564000}
   - component: {fileID: 3124407498619593736}
   - component: {fileID: 8130102221037682171}
-  - component: {fileID: 4336658324645967819}
+  - component: {fileID: -3875324948996766434}
+  - component: {fileID: -2246814187199260784}
+  - component: {fileID: 6536225791375356294}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -149,7 +151,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4336658324645967819
+--- !u!114 &-3875324948996766434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,9 +160,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 7160619141755959072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b026733eade9f49b440beb22f9c1ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 6204fac9fb49ded41b074dd5127b04ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 200
-  charRigidbody: {fileID: 8130102221037682171}
-  bomb: {fileID: 3147180524284313891, guid: c712629230b14f141a429e596fa81c19, type: 3}
+  PlayerHealth: 2
+  PlayerSpeed: 2
+--- !u!114 &-2246814187199260784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160619141755959072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893c41de5a829ee40989b85d7cec6dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6536225791375356294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160619141755959072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3359f73ec4326a44e9b2fe88680d2aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BombPrefab: {fileID: 2808653225414547410, guid: c712629230b14f141a429e596fa81c19, type: 3}
+  BombPower: 1
+  MaxBombCount: 1
+  PoolSize: 10
+  _bombPool: []
