@@ -49,7 +49,7 @@ public class BoomEffectController : MonoBehaviour
                 bom.StartCoroutine(bom.StartBoom(true));
             }
         }
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && isfire)
         {
             Debug.Log("Player");
             collision.GetComponent<PlayerMove>().PlayerDie();
