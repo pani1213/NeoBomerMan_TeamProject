@@ -9,6 +9,9 @@ public class PlayerFire : MonoBehaviour
     public BoomController BombPrefab;
     public int BombPower = 1;       // 폭탄 레벨
     public int MaxBombCount = 1;    // 최대 설치 가능 폭탄 개수
+    public bool GloveItem = false;  // 장갑 아이템 유무 (폭탄 던지기)
+    public bool ShoeItem = false;   // 신발 아이템 유무 (폭탄 밀기)
+
     Vector2 roundedPlayerPosition;
     // 폭탄 오브젝트 풀링
     public int PoolSize = 10;
@@ -44,5 +47,43 @@ public class PlayerFire : MonoBehaviour
             bomb.gameObject.SetActive(true);
             bomb.InIt();
         }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Boom"))
+        {
+            other.GetComponent<Collider2D>().isTrigger = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (GloveItem && collision.collider.CompareTag("Boom"))
+        {
+            ContactPoint2D contactPoint = collision.contacts[0];
+            Vector2 collisionDirection = -contactPoint.normal;
+            if (Mathf.Abs(collisionDirection.x) > Mathf.Abs(collisionDirection.y))
+            {
+                collisionDirection.y = 0;
+            }
+            else
+            {
+                collisionDirection.x = 0;
+            }
+
+            Vector2 newPosition = (Vector2)collision.gameObject.transform.position + collisionDirection * 2f;
+            collision.gameObject.transform.position = newPosition;
+            collision.collider.isTrigger = true;
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                rb.velocity = Vector2.zero;
+            }
+        } 
+        
+
     }
 }
