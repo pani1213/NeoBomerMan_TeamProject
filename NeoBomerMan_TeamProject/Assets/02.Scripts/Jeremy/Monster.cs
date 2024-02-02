@@ -50,6 +50,7 @@ public class Monster : MonoBehaviour
 
         SetTargetVector();
     }
+
     private void SearchProcess(Vector2 _dir,Direction _direction)
     {
         hit = Physics2D.Raycast(myPosition, _dir, 15f);
@@ -74,5 +75,32 @@ public class Monster : MonoBehaviour
             targetPosition = new Vector2(transform.position.x + -moveDistance, transform.position.y);
         else if (moveDir == Direction.right)
             targetPosition = new Vector2(transform.position.x + moveDistance, transform.position.y);
+    }
+    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            Debug.Log("플레이어 충돌");
+            Player playerheaith = collision.collider.GetComponent<Player>();
+            playerheaith.PlayerHealth -= 1;
+        }
+        else if(collision.collider.CompareTag("Monster"))
+        {
+            Debug.Log("몬스터 충돌");
+            GameObject Monster1 = collision.collider.GetComponent<GameObject>();
+            GameObject Monster2 = collision.collider.GetComponent<GameObject>();
+            
+            if (Monster1 != null && Monster2 != null)// 오브젝트의 방향이 같지 않다면
+            {
+
+            }
+            else
+            {
+                SearchDirection();
+            }
+        }
+        
     }
 }
