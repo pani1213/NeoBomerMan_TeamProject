@@ -43,7 +43,6 @@ public class BoomController : MonoBehaviour
     {
         if (actionCount > 0)
             return;
-        Debug.Log(++actionCount);
         OnAndOffCollider(false);
     }
     public IEnumerator StartBoom(bool _isNow = false)
@@ -124,6 +123,8 @@ public class BoomController : MonoBehaviour
     }
     public void MakeItem(GameObject block)
     {
+        if (block == null)
+            return;
         if (UnityEngine.Random.Range(0, 5) == 0)
         {
             GameObject item = null;

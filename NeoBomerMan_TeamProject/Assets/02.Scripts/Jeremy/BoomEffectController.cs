@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BoomEffectController : MonoBehaviour
 {
-    public BoomController boomController;
+    //public BoomController boomController;
     public ParticleSystem boomparticle;
     public BoxCollider2D myCollider;
 
@@ -34,27 +34,24 @@ public class BoomEffectController : MonoBehaviour
         if (collision.CompareTag("Block"))
         {
             blockType = BlockType.block;
-            
         }
         if (collision.CompareTag("Brick"))
         {
             destroyBrick = collision.gameObject;
             blockType = BlockType.brick;
         }
-        if (collision.CompareTag("Boom"))
-        {
-            Debug.Log(isfire);
-        }
         if (collision.CompareTag("Boom")&& isfire)
         {
-            Debug.Log(0);
             BoomController bom = collision.GetComponent<BoomController>();
-
             if (bom != null)
             {
                 bom.StopAllCoroutines();
                 bom.StartCoroutine(bom.StartBoom(true));
             }
+        }
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Player");
         }
     }
 }

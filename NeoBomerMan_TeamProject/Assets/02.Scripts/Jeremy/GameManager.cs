@@ -14,4 +14,8 @@ public class GameManager : Singleton<GameManager>
         SoundManager.instance.PlaySfx(SoundManager.Sfx.Start);       
         SoundManager.instance.PlayBgm(true);
     }
+    public void PlayerDie()
+    {
+        
+    }
 }

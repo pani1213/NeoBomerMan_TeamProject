@@ -26,19 +26,19 @@ public class Item : MonoBehaviour
             {
                 if (playerFire.BombPower < boomMaxCount)
                     playerFire.BombPower++;
-                Debug.Log(playerFire.BombPower);
+        
             }
             else if (IType == ItemType.BombCount)
             {
                 playerFire.MaxBombCount++;
-                Debug.Log(playerFire.MaxBombCount);
+
             }
 
             else if (IType == ItemType.Speed)
             {
                 if(playerMove._speed < speedMaxCount)
                 playerMove._speed++;
-                Debug.Log(playerMove._speed);
+              
             }
             Destroy(this.gameObject);
         }

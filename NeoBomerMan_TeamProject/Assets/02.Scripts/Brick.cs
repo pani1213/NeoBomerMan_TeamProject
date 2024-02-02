@@ -2,23 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Block : MonoBehaviour
+public class Brick : MonoBehaviour
 {
     public GameObject BombPowerItemPrefab;
     public GameObject BombCountItemPrefab;
     public GameObject SpeedItemPrefab;
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // 폭탄과 부딪혔을 때
-        if (collision.collider.CompareTag("Bomb"))
-        {
-            MakeItem();
-            
-            // 블록 삭제
-            Destroy(this.gameObject);
-        }
-    }
     public void MakeItem()
     {
         if (Random.Range(0,5) == 0)     // 20%

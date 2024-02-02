@@ -24,7 +24,7 @@ public class SoundManager : MonoBehaviour
         Init();
     }
 
-   void Init()
+    void Init()
     {
         GameObject bgmObject = new GameObject("BgmPlayer");
         bgmObject.transform.parent = transform;

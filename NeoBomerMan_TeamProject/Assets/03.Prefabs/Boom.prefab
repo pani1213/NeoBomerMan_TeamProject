@@ -146,7 +146,6 @@ MonoBehaviour:
   BombPowerItemPrefab: {fileID: 7642407625254855811, guid: 3f1f9da70ccd3c64bbe7de2c5923419c, type: 3}
   BombCountItemPrefab: {fileID: 8929806702488714409, guid: 2eebd71eb14b4b24897e830e699246dc, type: 3}
   SpeedItemPrefab: {fileID: 302745638656182270, guid: d625058ada468dc46a3d584a11bbe81f, type: 3}
-  boomControllers: []
 --- !u!50 &-3921377235624459127
 Rigidbody2D:
   serializedVersion: 4
