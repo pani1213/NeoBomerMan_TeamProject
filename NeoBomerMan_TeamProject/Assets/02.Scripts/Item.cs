@@ -6,7 +6,9 @@ public enum ItemType
 {
     BombPower = 0,
     BombCount = 1,
-    Speed = 2
+    Speed = 2,
+    Glove = 3,
+    Shoe = 4
 }
 public class Item : MonoBehaviour
 {
@@ -39,6 +41,16 @@ public class Item : MonoBehaviour
                 if(playerMove._speed < speedMaxCount)
                 playerMove._speed++;
               
+            }
+
+            else if (IType == ItemType.Glove)
+            {
+                playerFire.GloveItem = true;
+            }
+
+            else if (IType == ItemType.Shoe)
+            {
+                playerFire.ShoeItem = true;
             }
             Destroy(this.gameObject);
         }
