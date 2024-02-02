@@ -54,5 +54,9 @@ public class BoomEffectController : MonoBehaviour
             Debug.Log("Player");
             collision.GetComponent<PlayerMove>().PlayerDie();
         }
+        if (collision.CompareTag("Item") && isfire)
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

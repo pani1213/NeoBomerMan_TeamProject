@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -2246814187199260784}
   - component: {fileID: 6536225791375356294}
   - component: {fileID: 6140345053125386161}
+  - component: {fileID: 4598149903463679640}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -179,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   animator: {fileID: 6140345053125386161}
+  animation: {fileID: 4598149903463679640}
   playerCollider: {fileID: 3124407498619593736}
 --- !u!114 &6536225791375356294
 MonoBehaviour:
@@ -195,6 +197,8 @@ MonoBehaviour:
   BombPrefab: {fileID: 3147180524284313891, guid: c712629230b14f141a429e596fa81c19, type: 3}
   BombPower: 1
   MaxBombCount: 1
+  GloveItem: 0
+  ShoeItem: 0
   PoolSize: 10
   _bombPool: []
 --- !u!95 &6140345053125386161
@@ -218,3 +222,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &4598149903463679640
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160619141755959072}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 6dfcc2ac00d036149b9abf077d012593, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

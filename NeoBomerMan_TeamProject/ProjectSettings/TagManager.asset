@@ -8,6 +8,7 @@ TagManager:
   - Block
   - Brick
   - Boom
+  - Item
   layers:
   - Default
   - TransparentFX

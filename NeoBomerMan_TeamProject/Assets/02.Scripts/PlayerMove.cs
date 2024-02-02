@@ -10,10 +10,12 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D _rigidbody;
     Vector2 playerDir;
     public Animator animator;
+    public Animation animation;
     public CircleCollider2D playerCollider;
     Player player;
     void Start()
     {
+        animation.clip.legacy = true;
         player = GetComponent<Player>();
         //_speed = player.PlayerSpeed;
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -24,8 +26,11 @@ public class PlayerMove : MonoBehaviour
         float v = UnityEngine.Input.GetAxisRaw("Vertical");
         playerDir = new Vector2(h, v);
         playerDir = playerDir.normalized;
-        animator.SetFloat("Horizontal", h);
-        animator.SetFloat("Vertical", v);
+        if (GameManager.instance.isInput)
+        {
+            animator.SetFloat("Horizontal", h);
+            animator.SetFloat("Vertical", v);
+        }
 
     }
     private void FixedUpdate()
@@ -35,6 +40,7 @@ public class PlayerMove : MonoBehaviour
     }
     public void PlayerDie()
     {
+        animation.Play("PlayerDie");
         GameManager.instance.isInput = false;
         _rigidbody.velocity = Vector2.zero;
         player.PlayerHealth--;
