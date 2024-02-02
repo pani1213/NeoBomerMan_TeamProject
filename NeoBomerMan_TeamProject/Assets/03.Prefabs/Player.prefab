@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -3875324948996766434}
   - component: {fileID: -2246814187199260784}
   - component: {fileID: 6536225791375356294}
+  - component: {fileID: 6140345053125386161}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -177,6 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
+  animator: {fileID: 6140345053125386161}
+  playerCollider: {fileID: 3124407498619593736}
 --- !u!114 &6536225791375356294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,3 +197,24 @@ MonoBehaviour:
   MaxBombCount: 1
   PoolSize: 10
   _bombPool: []
+--- !u!95 &6140345053125386161
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160619141755959072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e67a290258a3a04fbf8c73651ab2fea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

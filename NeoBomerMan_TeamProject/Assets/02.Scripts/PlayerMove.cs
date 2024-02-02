@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -8,21 +9,45 @@ public class PlayerMove : MonoBehaviour
     public int _speed= 1;
     private Rigidbody2D _rigidbody;
     Vector2 playerDir;
+    public Animator animator;
+    public CircleCollider2D playerCollider;
+    Player player;
     void Start()
     {
-        //Player player = GetComponent<Player>();
+        player = GetComponent<Player>();
         //_speed = player.PlayerSpeed;
         _rigidbody = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        float h = UnityEngine.Input.GetAxisRaw("Horizontal");
+        float v = UnityEngine.Input.GetAxisRaw("Vertical");
         playerDir = new Vector2(h, v);
         playerDir = playerDir.normalized;
+        animator.SetFloat("Horizontal", h);
+        animator.SetFloat("Vertical", v);
+
     }
     private void FixedUpdate()
     {
-        _rigidbody.velocity = playerDir * defaultSpeed * _speed * Time.deltaTime;
+        if (GameManager.instance.isInput)
+            _rigidbody.velocity = playerDir * defaultSpeed * _speed * Time.deltaTime;
+    }
+    public void PlayerDie()
+    {
+        GameManager.instance.isInput = false;
+        _rigidbody.velocity = Vector2.zero;
+        player.PlayerHealth--;
+        playerCollider.enabled = false;
+        StartCoroutine(PlayerRespawn());
+    }
+    IEnumerator PlayerRespawn()
+    {
+        yield return new WaitForSeconds(1);
+        GameManager.instance.isInput = true;
+        player.gameObject.transform.position = new Vector2(-6f, 4.5f);
+        playerCollider.enabled = true;
+
+
     }
 }

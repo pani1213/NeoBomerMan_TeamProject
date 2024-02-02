@@ -47,7 +47,6 @@ public class Monster : MonoBehaviour
                 SearchProcess(Vector2.right, Direction.right);
                 break;
         }
-
         SetTargetVector();
     }
     private void SearchProcess(Vector2 _dir,Direction _direction)
