@@ -10,7 +10,6 @@ public class Monster : MonoBehaviour
     float moveDistance,moveSpeed = 1;
     public Vector2 myPosition,targetPosition;
     public Animation myAnimation;
-    public StageDoor stageDoor;
 
     private RaycastHit2D hit;
     private Direction moveDir;
@@ -87,27 +86,21 @@ public class Monster : MonoBehaviour
 
     public void MonsterDie()
     {
-        
         StartCoroutine(MonsterDieAction());
     }
     IEnumerator MonsterDieAction()
     {
-        if (stageDoor != null)
-        {
-            stageDoor.openScore--;
-            if (stageDoor.openScore == 0) stageDoor.DoorOpen();
-        }
         isAniPlay = true;
         myAnimation.Play("MonsterDie");
         yield return new WaitForSeconds(1);
         gameObject.SetActive(false);
-   
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Boom"))
         { 
+            Debug.Log("Research");
             SearchDirection();
         }
         if (collision.CompareTag("Player"))
