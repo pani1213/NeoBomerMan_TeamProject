@@ -40,6 +40,7 @@ public class PlayerMove : MonoBehaviour
     }
     public void PlayerDie()
     {
+        player.PlayerHealth--;
         animation.Play("PlayerDie");
         GameManager.instance.isInput = false;
         _rigidbody.velocity = Vector2.zero;
@@ -49,9 +50,11 @@ public class PlayerMove : MonoBehaviour
     }
     IEnumerator PlayerRespawn()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.2f);
+        Debug.Log("»ì¾Æ³²");
         GameManager.instance.isInput = true;
         player.gameObject.transform.position = new Vector2(-6f, 4.5f);
         playerCollider.enabled = true;
+        player.transform.localScale = Vector2.one;
     }
 }

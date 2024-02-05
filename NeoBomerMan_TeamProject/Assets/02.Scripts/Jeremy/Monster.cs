@@ -97,6 +97,7 @@ public class Monster : MonoBehaviour
             stageDoor.openScore--;
             if (stageDoor.openScore == 0) stageDoor.DoorOpen();
         }
+        GameManager.instance.SetScoer(100);
         isAniPlay = true;
         myAnimation.Play("MonsterDie");
         yield return new WaitForSeconds(1);

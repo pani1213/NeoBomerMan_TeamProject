@@ -8,7 +8,8 @@ public class PlayerFire : MonoBehaviour
     [Header("폭탄 프리팹")]
     public BoomController BombPrefab;
     public int BombPower = 1;       // 폭탄 레벨
-    public int MaxBombCount = 1;    // 최대 설치 가능 폭탄 개수
+    public int MaxBombCount = 1;
+    public int BombCount = 1;    // 최대 설치 가능 폭탄 개수
     public bool GloveItem = false;  // 장갑 아이템 유무 (폭탄 던지기)
     public bool ShoeItem = false;   // 신발 아이템 유무 (폭탄 밀기)
 
@@ -28,9 +29,9 @@ public class PlayerFire : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && MaxBombCount > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && BombCount > 0)
         {
-            MaxBombCount--;
+            BombCount--;
             // 플레이어 위치 기준  x: 반올림   y: 내림 + 0.5
             roundedPlayerPosition = new Vector2(Mathf.Round(transform.position.x), Mathf.Floor(transform.position.y) + 0.5f);
             BoomController bomb = null;

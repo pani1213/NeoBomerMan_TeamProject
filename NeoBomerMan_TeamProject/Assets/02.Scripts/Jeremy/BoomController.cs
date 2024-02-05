@@ -68,7 +68,7 @@ public class BoomController : MonoBehaviour
         yield return new WaitForSeconds(1);
         StopCoroutine(StartBoom());
         gameObject.SetActive(false);
-        GameManager.instance.playerFire.MaxBombCount++;
+        GameManager.instance.playerFire.BombCount++;
     }
     public void OnAndOffCollider(bool _bool)
     {
