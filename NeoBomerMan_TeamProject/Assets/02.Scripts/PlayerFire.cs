@@ -50,60 +50,40 @@ public class PlayerFire : MonoBehaviour
     }
 
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Boom"))
-        {
-            other.GetComponent<Collider2D>().isTrigger = false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (GloveItem && collision.collider.CompareTag("Boom"))
-        {
-            ContactPoint2D contactPoint = collision.contacts[0];
-            Vector2 collisionDirection = -contactPoint.normal;
-            if (Mathf.Abs(collisionDirection.x) > Mathf.Abs(collisionDirection.y))
-            {
-                collisionDirection.y = 0;
-            }
-            else
-            {
-                collisionDirection.x = 0;
-            }
-
-            Vector2 newPosition = (Vector2)collision.gameObject.transform.position + collisionDirection * 2f;
-            collision.gameObject.transform.position = newPosition;
-            collision.collider.isTrigger = true;
-            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-                rb.velocity = Vector2.zero;
-            }
-        }
-
-        else if (collision.collider.CompareTag("Boom"))    //ShoeItem &&
-        {
-            ContactPoint2D contactPoint = collision.contacts[0];
-            Vector2 collisionDirection = -contactPoint.normal;
-            Vector2 bombForceDirection;
-            if (Mathf.Abs(collisionDirection.x) > Mathf.Abs(collisionDirection.y))
-            {
-                bombForceDirection = new Vector2(1f, 0f);
-            }
-            else
-            {
-                bombForceDirection = new Vector2(0f, 1f);
-            }
-            float force = 1f;
-            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.AddForce(bombForceDirection * force, ForceMode2D.Impulse);
-            }
-        }
-
-    }
+    //private void OnTriggerExit2D(Collider2D other)
+    //{
+    //    if (other.CompareTag("Boom"))
+    //    {
+    //        other.GetComponent<Collider2D>().isTrigger = false;
+    //    }
+    //}
+    //
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (GloveItem && collision.collider.CompareTag("Boom"))
+    //    {
+    //        ContactPoint2D contactPoint = collision.contacts[0];
+    //        Vector2 collisionDirection = -contactPoint.normal;
+    //        if (Mathf.Abs(collisionDirection.x) > Mathf.Abs(collisionDirection.y))
+    //        {
+    //            collisionDirection.y = 0;
+    //        }
+    //        else
+    //        {
+    //            collisionDirection.x = 0;
+    //        }
+    //
+    //        Vector2 newPosition = (Vector2)collision.gameObject.transform.position + collisionDirection * 2f;
+    //        collision.gameObject.transform.position = newPosition;
+    //        collision.collider.isTrigger = true;
+    //        Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+    //        if (rb != null)
+    //        {
+    //            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    //            rb.velocity = Vector2.zero;
+    //        }
+    //    } 
+    //    
+    //
+    //}
 }
