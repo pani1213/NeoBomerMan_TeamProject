@@ -9,22 +9,29 @@ public class Monster : MonoBehaviour
 {
     float moveDistance,moveSpeed = 1;
     public Vector2 myPosition,targetPosition;
+    public Animation myAnimation;
 
     private RaycastHit2D hit;
     private Direction moveDir;
+    private bool isAniPlay = false;
 
     private void Start()
     {
+        isAniPlay = false;
+        myAnimation.clip.legacy = true;
         targetPosition = transform.position;
     }
     private void Update()
     {
         myPosition = new Vector2(transform.position.x, transform.position.y - 0.5f);
 
-        if (targetPosition != (Vector2)transform.position)
+        if (targetPosition != (Vector2)transform.position && !isAniPlay)
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         else
             SearchDirection();
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            MonsterDie();
 
     }
     private void SearchDirection()
@@ -75,31 +82,31 @@ public class Monster : MonoBehaviour
         else if (moveDir == Direction.right)
             targetPosition = new Vector2(transform.position.x + moveDistance, transform.position.y);
     }
-    
+   
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void MonsterDie()
     {
-        if (collision.collider.CompareTag("Player"))
-        {
-            Debug.Log("플레이어 충돌");
-            Player playerheaith = collision.collider.GetComponent<Player>();
-            playerheaith.PlayerHealth -= 1;
-        }
-        else if(collision.collider.CompareTag("Monster"))
-        {
-            Debug.Log("몬스터 충돌");
-            GameObject Monster1 = collision.collider.GetComponent<GameObject>();
-            GameObject Monster2 = collision.collider.GetComponent<GameObject>();
-            
-            if (Monster1 != null && Monster2 != null)// 오브젝트의 방향이 같지 않다면
-            {
+        StartCoroutine(MonsterDieAction());
+    }
+    IEnumerator MonsterDieAction()
+    {
+        isAniPlay = true;
+        myAnimation.Play("MonsterDie");
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(false);
+    }
 
-            }
-            else
-            {
-                SearchDirection();
-            }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Boom"))
+        { 
+            Debug.Log("Research");
+            SearchDirection();
         }
-        
+        if (collision.CompareTag("Player"))
+        {
+            GameManager.instance.playerMove.PlayerDie();
+        }
+
     }
 }

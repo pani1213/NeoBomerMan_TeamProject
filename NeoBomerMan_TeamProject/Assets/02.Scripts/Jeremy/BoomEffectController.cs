@@ -51,12 +51,17 @@ public class BoomEffectController : MonoBehaviour
         }
         if (collision.CompareTag("Player") && isfire)
         {
-            Debug.Log("Player");
-            collision.GetComponent<PlayerMove>().PlayerDie();
+            GameManager.instance.playerMove.PlayerDie();
         }
         if (collision.CompareTag("Item") && isfire)
         {
             Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("Monster") && isfire)
+        {
+            collision.GetComponent<Monster>().MonsterDie();
+
+
         }
     }
 }
