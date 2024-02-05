@@ -8,6 +8,7 @@ TagManager:
   - Block
   - Brick
   - Boom
+  - Monster
   layers:
   - Default
   - TransparentFX
