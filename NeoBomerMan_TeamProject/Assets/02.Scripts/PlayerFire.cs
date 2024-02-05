@@ -82,8 +82,28 @@ public class PlayerFire : MonoBehaviour
                 rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 rb.velocity = Vector2.zero;
             }
-        } 
-        
+        }
+
+        else if (collision.collider.CompareTag("Boom"))    //ShoeItem &&
+        {
+            ContactPoint2D contactPoint = collision.contacts[0];
+            Vector2 collisionDirection = -contactPoint.normal;
+            Vector2 bombForceDirection;
+            if (Mathf.Abs(collisionDirection.x) > Mathf.Abs(collisionDirection.y))
+            {
+                bombForceDirection = new Vector2(1f, 0f);
+            }
+            else
+            {
+                bombForceDirection = new Vector2(0f, 1f);
+            }
+            float force = 1f;
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.AddForce(bombForceDirection * force, ForceMode2D.Impulse);
+            }
+        }
 
     }
 }

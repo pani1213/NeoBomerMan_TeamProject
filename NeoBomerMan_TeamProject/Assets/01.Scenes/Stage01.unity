@@ -14568,6 +14568,7 @@ MonoBehaviour:
   playerMove: {fileID: 1471922922}
   playerFire: {fileID: 1471922921}
   player: {fileID: 1471922923}
+  isInput: 1
 --- !u!1001 &1642697256
 PrefabInstance:
   m_ObjectHideFlags: 0
