@@ -19534,22 +19534,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2274447310043409684, guid: 0108df9bd982178448db4c1c5be80be8, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 59af4cead8b917a4bbf30872b8bb3f36, type: 2}
-    - target: {fileID: 5440957813209570314, guid: 0108df9bd982178448db4c1c5be80be8, type: 3}
-      propertyPath: m_Animation
-      value: 
-      objectReference: {fileID: 7400000, guid: fceb5af6f5c6d5940a45c7c9386c6f0f, type: 2}
-    - target: {fileID: 5440957813209570314, guid: 0108df9bd982178448db4c1c5be80be8, type: 3}
-      propertyPath: m_Animations.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5440957813209570314, guid: 0108df9bd982178448db4c1c5be80be8, type: 3}
-      propertyPath: m_Animations.Array.data[1]
-      value: 
-      objectReference: {fileID: 7400000, guid: 0ecd36f476222e34b8b12dc54ea6c2fa, type: 2}
     - target: {fileID: 7480405216207246875, guid: 0108df9bd982178448db4c1c5be80be8, type: 3}
       propertyPath: m_Name
       value: Monster_02
