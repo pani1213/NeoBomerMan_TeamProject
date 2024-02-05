@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
+using static UnityEngine.ParticleSystem;
 public enum Direction { none, up, down, left, right }
 public enum BlockType { none, block,brick }
 public class BoomController : MonoBehaviour
@@ -20,13 +21,17 @@ public class BoomController : MonoBehaviour
 
     public WaitForSeconds boomSecond = new WaitForSeconds(1);
     public Dictionary<Direction, DirValue> fireContainer;
-    
+    public BoxCollider2D myCollider;
+    public GameObject boomImage;
+    public ParticleSystem myParticle;
     private int actionCount = 0;
     public void InIt()
     {
         //
         //GetComponent<BoxCollider2D>().enabled = true;
         //
+        myCollider.isTrigger = true;
+        boomImage.SetActive(true);
         actionCount = 0;
         fireContainer = new Dictionary<Direction, DirValue>();
         fireContainer.Add(Direction.up, new DirValue());
@@ -49,6 +54,8 @@ public class BoomController : MonoBehaviour
     {
         if (!_isNow)
             yield return new WaitForSeconds(2);
+        boomImage.SetActive(false);
+        myParticle.Play();
         //
         //GetComponent<BoxCollider2D>().enabled = false;
         //
@@ -153,6 +160,13 @@ public class BoomController : MonoBehaviour
                 item.transform.position = block.transform.position;
             }          
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+            myCollider.isTrigger = false;
+        
     }
 }
 public class DirValue

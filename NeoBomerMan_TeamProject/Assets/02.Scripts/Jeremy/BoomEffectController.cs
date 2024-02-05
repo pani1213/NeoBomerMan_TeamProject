@@ -60,8 +60,8 @@ public class BoomEffectController : MonoBehaviour
         if (collision.CompareTag("Monster") && isfire)
         {
             collision.GetComponent<Monster>().MonsterDie();
-
-
+            collision.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
+
 }

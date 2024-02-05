@@ -16,6 +16,7 @@ public class Singleton<T> : MonoBehaviour
     }
     protected virtual void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
         _instance = this.GetComponent<T>();
     }
 

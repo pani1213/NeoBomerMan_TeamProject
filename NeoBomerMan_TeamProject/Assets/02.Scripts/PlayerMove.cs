@@ -53,7 +53,5 @@ public class PlayerMove : MonoBehaviour
         GameManager.instance.isInput = true;
         player.gameObject.transform.position = new Vector2(-6f, 4.5f);
         playerCollider.enabled = true;
-
-
     }
 }
