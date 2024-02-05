@@ -19710,9 +19710,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d848a2189a036d4ebf7b4a0a6cb31f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MonsterHealth: 1
   myPosition: {x: 0, y: 0}
   targetPosition: {x: 0, y: 0}
+  myAnimation: {fileID: 0}
 --- !u!114 &8341162497482312674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19725,9 +19725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d848a2189a036d4ebf7b4a0a6cb31f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MonsterHealth: 1
   myPosition: {x: 0, y: 0}
   targetPosition: {x: 0, y: 0}
+  myAnimation: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -19735,5 +19735,5 @@ SceneRoots:
   - {fileID: 1530047280}
   - {fileID: 1491951302}
   - {fileID: 644220887}
-  - {fileID: 2065909109474411007}
   - {fileID: 2065909109720064638}
+  - {fileID: 2065909109474411007}
