@@ -7,15 +7,12 @@ using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 public class Monster : MonoBehaviour
 {
-    public int MonsterHealth = 1;
     float moveDistance,moveSpeed = 1;
     public Vector2 myPosition,targetPosition;
 
     private RaycastHit2D hit;
-    private RaycastHit2D search;
     private Direction moveDir;
 
-    Vector2 startPosition;
     private void Start()
     {
         targetPosition = transform.position;
@@ -32,7 +29,6 @@ public class Monster : MonoBehaviour
     }
     private void SearchDirection()
     {
-        startPosition = transform.position;
         moveDistance = 0;
         moveDir = Direction.none;
 
@@ -51,7 +47,6 @@ public class Monster : MonoBehaviour
                 SearchProcess(Vector2.right, Direction.right);
                 break;
         }
-
         SetTargetVector();
     }
 
@@ -80,19 +75,8 @@ public class Monster : MonoBehaviour
         else if (moveDir == Direction.right)
             targetPosition = new Vector2(transform.position.x + moveDistance, transform.position.y);
     }
-    private void FindPlayer(Vector2 _dir, Direction _direction, GameObject Player)
-    {       
-        search = Physics2D.Raycast(myPosition, _dir, 2f);
-        if(search.collider != Player)
-        {
-            SearchDirection();
-        }
-        else
-        {
+    
 
-        }
-
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
@@ -104,7 +88,18 @@ public class Monster : MonoBehaviour
         else if(collision.collider.CompareTag("Monster"))
         {
             Debug.Log("몬스터 충돌");
-            targetPosition = startPosition;
-        }       
+            GameObject Monster1 = collision.collider.GetComponent<GameObject>();
+            GameObject Monster2 = collision.collider.GetComponent<GameObject>();
+            
+            if (Monster1 != null && Monster2 != null)// 오브젝트의 방향이 같지 않다면
+            {
+
+            }
+            else
+            {
+                SearchDirection();
+            }
+        }
+        
     }
 }
