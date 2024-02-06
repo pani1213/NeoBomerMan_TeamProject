@@ -19,6 +19,7 @@ public class PlayerFire : MonoBehaviour
     public List<BoomController> _bombPool = null;
     private void Awake()
     {
+        BombCount = GameManager.instance.playerBoomCount;
         _bombPool = new List<BoomController>();
         for (int i = 0; i < PoolSize; i++)
         {
