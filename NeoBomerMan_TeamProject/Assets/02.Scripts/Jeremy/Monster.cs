@@ -5,6 +5,8 @@ using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
+
+
 public class Monster : MonoBehaviour
 {
     float moveDistance,moveSpeed = 1;
@@ -12,6 +14,9 @@ public class Monster : MonoBehaviour
     public Animation myAnimation;
 
     private RaycastHit2D hit;
+    private RaycastHit2D detection;
+    private float RushTime = 1.5f;
+
     private Direction moveDir;
     private bool isAniPlay = false;
 
@@ -27,12 +32,14 @@ public class Monster : MonoBehaviour
 
         if (targetPosition != (Vector2)transform.position && !isAniPlay)
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
         else
+            Rush();
             SearchDirection();
 
         if (Input.GetKeyDown(KeyCode.Q))
             MonsterDie();
-
+        
     }
     private void SearchDirection()
     {
@@ -70,6 +77,50 @@ public class Monster : MonoBehaviour
             }
         }
     }
+
+    private void Rush()
+    {
+        moveDistance = 0;
+        moveDir = Direction.none;
+        switch (Random.Range(0, 4))
+        {
+            case 0:
+                RushDetection(Vector2.up, Direction.up);
+                break;
+            case 1:
+                RushDetection(Vector2.down, Direction.down);
+                break;
+            case 2:
+                RushDetection(Vector2.left, Direction.left);
+                break;
+            default:
+                RushDetection(Vector2.right, Direction.right);
+                break;
+        }
+
+
+
+        // 가로,세로 2유닛씩 Raycast를 사용, Update하고 
+        // 만약 레이저 안에 Player의 콜라이더가 감지되면 
+        // 1초가 지난 후 Player를 추적하여 속도 *2를 한다
+        // 만약 블록 블릭에 부딪혔다면 
+        // SearchDirection() 
+    }
+    private void RushDetection(Vector2 _dir, Direction _direction)
+    {
+        detection = Physics2D.Raycast(myPosition, _dir, 2f);
+        GameObject player = new GameObject("Player");
+
+        if (detection.collider == player)
+        {
+            RushTime -= Time.deltaTime;
+            if (RushTime < 0)
+            {
+                moveSpeed *= 2;
+            }
+        }
+    }
+
     private void SetTargetVector()
     {
         moveDistance--;
@@ -96,6 +147,7 @@ public class Monster : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Boom"))
@@ -106,6 +158,16 @@ public class Monster : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             GameManager.instance.playerMove.PlayerDie();
+        }
+        if (collision.CompareTag("Block"))
+        {
+            RushTime = 1.5f;
+            moveSpeed = 1;
+        }
+        if (collision.CompareTag("Bicek"))
+        {
+            RushTime = 1.5f;
+            moveSpeed = 1;
         }
 
     }
