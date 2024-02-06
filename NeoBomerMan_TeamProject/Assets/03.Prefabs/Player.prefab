@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 200
   animator: {fileID: 6140345053125386161}
-  animation: {fileID: 4598149903463679640}
+  myAnimation: {fileID: 4598149903463679640}
   playerCollider: {fileID: 3124407498619593736}
 --- !u!114 &6536225791375356294
 MonoBehaviour:
@@ -197,6 +197,7 @@ MonoBehaviour:
   BombPrefab: {fileID: 3147180524284313891, guid: c712629230b14f141a429e596fa81c19, type: 3}
   BombPower: 1
   MaxBombCount: 1
+  BombCount: 1
   GloveItem: 0
   ShoeItem: 0
   PoolSize: 10
