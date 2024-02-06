@@ -95,6 +95,8 @@ MonoBehaviour:
   BombPowerItemPrefab: {fileID: 7642407625254855811, guid: 3f1f9da70ccd3c64bbe7de2c5923419c, type: 3}
   BombCountItemPrefab: {fileID: 8929806702488714409, guid: 2eebd71eb14b4b24897e830e699246dc, type: 3}
   SpeedItemPrefab: {fileID: 302745638656182270, guid: d625058ada468dc46a3d584a11bbe81f, type: 3}
+  LifeItemPrefab: {fileID: 5278024343581592207, guid: be8429282e2aa88419ce8dc53b7507be, type: 3}
+  TimeItemPrefab: {fileID: 3082085356762513225, guid: 51d30a38b54385b4580acfa333175a54, type: 3}
   myCollider: {fileID: 3390437920825703938}
   boomImage: {fileID: 8427748842657556283}
   myParticle: {fileID: 9002912460012861085}

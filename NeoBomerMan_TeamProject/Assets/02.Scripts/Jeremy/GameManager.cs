@@ -83,4 +83,8 @@ public class GameManager : Singleton<GameManager>
     {
         canvasController.timer.text = TimeSpan.FromSeconds(inGameTimer).ToString(@"mm\:ss");
     }
+    public void TimePlus(float plusTime)
+    {   
+        inGameTimer += plusTime;
+    }
 }
