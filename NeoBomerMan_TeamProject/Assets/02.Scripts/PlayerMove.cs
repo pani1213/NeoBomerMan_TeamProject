@@ -6,16 +6,16 @@ using UnityEngine.Windows;
 public class PlayerMove : MonoBehaviour
 {
     private int defaultSpeed = 150;
-    public int _speed= 1;
+    public float _speed= 1;
     private Rigidbody2D _rigidbody;
     Vector2 playerDir;
     public Animator animator;
-    public Animation animation;
+    public Animation myAnimation;
     public CircleCollider2D playerCollider;
     Player player;
     void Start()
     {
-        animation.clip.legacy = true;
+        myAnimation.clip.legacy = true;
         player = GetComponent<Player>();
         //_speed = player.PlayerSpeed;
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -31,7 +31,6 @@ public class PlayerMove : MonoBehaviour
             animator.SetFloat("Horizontal", h);
             animator.SetFloat("Vertical", v);
         }
-
     }
     private void FixedUpdate()
     {
@@ -40,18 +39,24 @@ public class PlayerMove : MonoBehaviour
     }
     public void PlayerDie()
     {
-        animation.Play("PlayerDie");
-        GameManager.instance.isInput = false;
-        _rigidbody.velocity = Vector2.zero;
         player.PlayerHealth--;
+        if (player.PlayerHealth <= -1)
+            Debug.Log("처음부터");
+        myAnimation.Play("PlayerDie");
+        GameManager.instance.isInput = false;
+        GameManager.instance.StartTimer();
+        _rigidbody.velocity = Vector2.zero;
         playerCollider.enabled = false;
         StartCoroutine(PlayerRespawn());
     }
     IEnumerator PlayerRespawn()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.2f);
+        GameManager.instance.SetLife();
+        Debug.Log("살아남");
         GameManager.instance.isInput = true;
         player.gameObject.transform.position = new Vector2(-6f, 4.5f);
         playerCollider.enabled = true;
+        player.transform.localScale = Vector2.one;
     }
 }

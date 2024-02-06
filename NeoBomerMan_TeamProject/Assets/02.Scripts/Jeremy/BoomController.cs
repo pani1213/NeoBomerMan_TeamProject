@@ -18,6 +18,8 @@ public class BoomController : MonoBehaviour
     public GameObject BombPowerItemPrefab;
     public GameObject BombCountItemPrefab;
     public GameObject SpeedItemPrefab;
+    public GameObject LifeItemPrefab;
+    public GameObject TimeItemPrefab;
 
     public WaitForSeconds boomSecond = new WaitForSeconds(1);
     public Dictionary<Direction, DirValue> fireContainer;
@@ -68,7 +70,7 @@ public class BoomController : MonoBehaviour
         yield return new WaitForSeconds(1);
         StopCoroutine(StartBoom());
         gameObject.SetActive(false);
-        GameManager.instance.playerFire.MaxBombCount++;
+        GameManager.instance.playerFire.BombCount++;
     }
     public void OnAndOffCollider(bool _bool)
     {
@@ -136,22 +138,32 @@ public class BoomController : MonoBehaviour
         {
             GameObject item = null;
 
-            int num = UnityEngine.Random.Range(0, 3);
+            int num = UnityEngine.Random.Range(0, 11);
             switch (num)
             {
-                case 0:
+                case int n when n < 3:
                 {
                     item = Instantiate(BombPowerItemPrefab);
                     break;
-                }                  
-                case 1:
+                }
+                case int n when n >= 3 && n < 6:
                 {
                     item = Instantiate(BombCountItemPrefab);
                     break;
                 }
-                case 2:
+                case int n when n >= 6 &&n < 9:
                 {
                     item = Instantiate(SpeedItemPrefab);
+                    break;
+                }
+                case 9:
+                {
+                    item = Instantiate(TimeItemPrefab);
+                    break;
+                }
+                case 10:
+                {
+                    item = Instantiate(LifeItemPrefab); 
                     break;
                 }
             }

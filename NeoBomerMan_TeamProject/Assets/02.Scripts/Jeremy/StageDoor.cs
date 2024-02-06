@@ -11,7 +11,6 @@ public class StageDoor : MonoBehaviour
     public int openScore = 4;
     public void DoorOpen()
     {
-        Debug.Log(SceneManager.sceneCount);
         mySpriteRanderer.sprite = doorOpen;
         myCollider.isTrigger = true;
     }
@@ -19,9 +18,10 @@ public class StageDoor : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            int scene = SceneManager.sceneCount;
-            Debug.Log(scene);
-            SceneManager.LoadScene(++scene);
+            GameManager.instance.GetPlayerState();
+            Scene scene = SceneManager.GetActiveScene();
+            int sceneindex = scene.buildIndex;
+            SceneManager.LoadScene(++sceneindex);
         }
     }
 

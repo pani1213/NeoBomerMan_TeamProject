@@ -7,14 +7,15 @@ public enum ItemType
     BombPower = 0,
     BombCount = 1,
     Speed = 2,
-    Glove = 3,
-    Shoe = 4
+    Time = 3,
+    Life = 4
 }
 public class Item : MonoBehaviour
 {
     public ItemType IType;
     PlayerFire playerFire;
     PlayerMove playerMove;
+    Player player;
     private const int boomMaxCount = 5, speedMaxCount = 3;
     
     private void OnTriggerEnter2D(Collider2D otherCollider)
@@ -23,34 +24,36 @@ public class Item : MonoBehaviour
         {
             playerFire = otherCollider.GetComponent<PlayerFire>();
             playerMove = otherCollider.GetComponent<PlayerMove>();
+            player = otherCollider.GetComponent<Player>();
 
             if (IType == ItemType.BombPower)
             {
                 if (playerFire.BombPower < boomMaxCount)
                     playerFire.BombPower++;
-        
+                GameManager.instance.SetCanvasState();
             }
             else if (IType == ItemType.BombCount)
             {
                 playerFire.MaxBombCount++;
-
+                playerFire.BombCount = playerFire.MaxBombCount;
+                Debug.Log(playerFire.MaxBombCount);
+                GameManager.instance.SetCanvasState();
             }
-
             else if (IType == ItemType.Speed)
             {
-                if(playerMove._speed < speedMaxCount)
-                playerMove._speed++;
-              
+                if (playerMove._speed < speedMaxCount)
+                    playerMove._speed += 0.5f;
+                GameManager.instance.SetCanvasState();
             }
-
-            else if (IType == ItemType.Glove)
+            else if (IType == ItemType.Time)
             {
-                playerFire.GloveItem = true;
+                GameManager.instance.TimePlus(30);
+                GameManager.instance.SetTimer();
             }
-
-            else if (IType == ItemType.Shoe)
+            else if (IType == ItemType.Life)
             {
-                playerFire.ShoeItem = true;
+                player.PlayerHealth++;
+                GameManager.instance.SetLife();
             }
             Destroy(this.gameObject);
         }
