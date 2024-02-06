@@ -13,5 +13,6 @@ public class StageController : MonoBehaviour
         GameManager.instance.playerMove = playerObj.GetComponent<PlayerMove>();
         GameManager.instance.playerFire = playerObj.GetComponent<PlayerFire>();
         GameManager.instance.SetPlayerState();
+        GameManager.instance.SetCanvasState();
     }
 }

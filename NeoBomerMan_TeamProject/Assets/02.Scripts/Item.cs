@@ -30,17 +30,20 @@ public class Item : MonoBehaviour
             {
                 if (playerFire.BombPower < boomMaxCount)
                     playerFire.BombPower++;
+                GameManager.instance.SetCanvasState();
             }
             else if (IType == ItemType.BombCount)
             {
                 playerFire.MaxBombCount++;
                 playerFire.BombCount = playerFire.MaxBombCount;
                 Debug.Log(playerFire.MaxBombCount);
+                GameManager.instance.SetCanvasState();
             }
             else if (IType == ItemType.Speed)
             {
                 if (playerMove._speed < speedMaxCount)
                     playerMove._speed += 0.5f;
+                GameManager.instance.SetCanvasState();
             }
             else if (IType == ItemType.Time)
             {

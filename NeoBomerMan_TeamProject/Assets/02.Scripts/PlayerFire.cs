@@ -12,7 +12,6 @@ public class PlayerFire : MonoBehaviour
     public int BombCount = 1;    // 최대 설치 가능 폭탄 개수
     public bool GloveItem = false;  // 장갑 아이템 유무 (폭탄 던지기)
     public bool ShoeItem = false;   // 신발 아이템 유무 (폭탄 밀기)
-
     Vector2 roundedPlayerPosition;
     // 폭탄 오브젝트 풀링
     public int PoolSize = 10;
@@ -50,7 +49,6 @@ public class PlayerFire : MonoBehaviour
             bomb.InIt();
         }
     }
-
 
     //private void OnTriggerExit2D(Collider2D other)
     //{

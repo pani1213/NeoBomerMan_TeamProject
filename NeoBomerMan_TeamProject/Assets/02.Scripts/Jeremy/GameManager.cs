@@ -36,7 +36,6 @@ public class GameManager : Singleton<GameManager>
     {
         isTimeCheck = true;
         inGameTimer = maxGameCount;
-        IngameTimer();
     }
     private void IngameTimer()
     {
@@ -80,6 +79,12 @@ public class GameManager : Singleton<GameManager>
         playerFire.BombPower = playerBoomRange;
         playerFire.MaxBombCount = playerBoomCount;
         playerMove._speed = player_speed;
+    }
+    public void SetCanvasState()
+    {
+        canvasController.boomCount.text = playerFire.MaxBombCount.ToString();
+        canvasController.boomRange.text = playerFire.BombPower.ToString();
+        canvasController.Speed.text = playerMove._speed.ToString();
     }
     public void ButtonActionNextScene()
     {

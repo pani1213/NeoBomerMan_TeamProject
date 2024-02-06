@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CanvasController : MonoBehaviour
 {
     public Canvas myCanvas;
-    public Text life, score, timer, notice;
+    public Text life, score, timer, notice,boomCount,boomRange,Speed;
     private void Start()
     {
         GameManager.instance.canvasController = this;

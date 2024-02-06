@@ -10,12 +10,12 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D _rigidbody;
     Vector2 playerDir;
     public Animator animator;
-    public Animation animation;
+    public Animation myAnimation;
     public CircleCollider2D playerCollider;
     Player player;
     void Start()
     {
-        animation.clip.legacy = true;
+        myAnimation.clip.legacy = true;
         player = GetComponent<Player>();
         //_speed = player.PlayerSpeed;
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -42,8 +42,9 @@ public class PlayerMove : MonoBehaviour
         player.PlayerHealth--;
         if (player.PlayerHealth <= -1)
             Debug.Log("처음부터");
-        animation.Play("PlayerDie");
+        myAnimation.Play("PlayerDie");
         GameManager.instance.isInput = false;
+        GameManager.instance.StartTimer();
         _rigidbody.velocity = Vector2.zero;
         playerCollider.enabled = false;
         StartCoroutine(PlayerRespawn());
