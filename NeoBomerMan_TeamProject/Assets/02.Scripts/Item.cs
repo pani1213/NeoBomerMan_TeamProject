@@ -35,6 +35,7 @@ public class Item : MonoBehaviour
             {
                 playerFire.MaxBombCount++;
                 playerFire.BombCount = playerFire.MaxBombCount;
+                Debug.Log(playerFire.MaxBombCount);
             }
             else if (IType == ItemType.Speed)
             {
