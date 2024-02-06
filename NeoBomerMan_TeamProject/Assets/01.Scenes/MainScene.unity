@@ -244,7 +244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &394273503
 RectTransform:
   m_ObjectHideFlags: 0
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f9e4cb8d3684b42a716b6de9483a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BgmClip: {fileID: 8300000, guid: 99ab8e46b9c8a254bb70f355d34c004e, type: 3}
+  BgmClips: []
   BgmVolume: 0
   SfxClips:
   - {fileID: 8300000, guid: cfe0aba5af9fdde468557c016ddbc497, type: 3}
@@ -567,9 +567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTitle: {fileID: 702666252}
+  textobj: {fileID: 394273502}
   circleRander: {fileID: 1065739664}
-  myImage: {fileID: 771388639}
-  endSprite: {fileID: 21300000, guid: 38fc299ed48b6e2448d79e2d30893a0c, type: 3}
 --- !u!1 &1065739662
 GameObject:
   m_ObjectHideFlags: 0
