@@ -21,11 +21,7 @@ public class GameManager : Singleton<GameManager>
     private float oneSecond =0;
     public float Cool_time = 2;
     bool isPlay = false;
-    private void Start()
-    {
-        SoundManager.instance.PlaySfx(SoundManager.Sfx.start);
-        SoundManager.instance.PlayBgm(SoundManager.Bgm.town);
-    }
+
     public void Update()
     {
         IngameTimer();
