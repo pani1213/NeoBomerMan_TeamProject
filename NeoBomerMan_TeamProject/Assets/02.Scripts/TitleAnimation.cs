@@ -8,14 +8,11 @@ public class TitleAnimation : MonoBehaviour
     float cooltime = 3, boomCooltime = 1.5f;
     float rotatez = 720, rotate_y = 0;
     public GameObject boomObj;
-    Sequence mySequence = DOTween.Sequence();
+
     void Start()
     {
         transform.DOScale(2.5f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.OutSine);
-
     }
-
-
     void Update()
     {
         if(Input.anyKeyDown)
