@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour
     AudioSource[] SfxPlayer;
     int channelIndex;
 
-    public enum Bgm { town, underwater }
+    public enum Bgm { town, underwater}
     public enum Sfx { start, explosion, setbomb }
 
     public static SoundManager instance;

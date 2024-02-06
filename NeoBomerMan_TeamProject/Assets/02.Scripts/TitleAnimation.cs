@@ -8,7 +8,7 @@ public class TitleAnimation : MonoBehaviour
 {
     float cooltime = 3;
     float rotatez = 720, rotate_y = 0;
-    public GameObject mainTitle;
+    public GameObject mainTitle,textobj;
     public SpriteRenderer circleRander;
 
     bool isPlayAni = false;
@@ -21,8 +21,7 @@ public class TitleAnimation : MonoBehaviour
     }
     IEnumerator TitleAnimationCoroutin()
     {
-        yield return new WaitForSeconds(2f);
-        Debug.Log(colorA);
+        yield return new WaitForSeconds(3f);
         while (colorA >= 0)
         {
             colorA -= Time.deltaTime * 100;
@@ -30,6 +29,7 @@ public class TitleAnimation : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         mainTitle.SetActive(true);
+        textobj.SetActive(true);
         mainTitle.transform.DOScale(90f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.OutSine);
         isPlayRotate = true;
         yield return new WaitForSeconds(1);
