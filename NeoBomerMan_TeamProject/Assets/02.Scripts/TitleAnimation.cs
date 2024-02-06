@@ -28,6 +28,7 @@ public class TitleAnimation : MonoBehaviour
             circleRander.color = new Color(255f / 255f, 255f / 255f, 255f / 255f, colorA / 255f);
             yield return new WaitForEndOfFrame();
         }
+        SoundManager.instance.PlayBgm(SoundManager.Bgm.Title);
         mainTitle.SetActive(true);
         textobj.SetActive(true);
         mainTitle.transform.DOScale(90f, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.OutSine);
