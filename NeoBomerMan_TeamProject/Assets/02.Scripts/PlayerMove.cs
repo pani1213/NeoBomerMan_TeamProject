@@ -6,7 +6,7 @@ using UnityEngine.Windows;
 public class PlayerMove : MonoBehaviour
 {
     private int defaultSpeed = 150;
-    public int _speed= 1;
+    public float _speed= 1;
     private Rigidbody2D _rigidbody;
     Vector2 playerDir;
     public Animator animator;

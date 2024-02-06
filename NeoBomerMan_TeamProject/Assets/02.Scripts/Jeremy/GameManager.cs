@@ -8,7 +8,8 @@ using UnityEngine.UIElements;
 
 public class GameManager : Singleton<GameManager>
 {
-    public int playerLife = 2, playerBoomRange = 1, playerBoomCount = 1, player_speed = 200, gameScore = 0;
+    public int playerLife = 2, playerBoomRange = 1, playerBoomCount = 1, gameScore = 0;
+    public float player_speed = 200;
     private float inGameTimer = 120, maxGameCount = 120;
     
     public string gameTimer = "";
@@ -18,6 +19,8 @@ public class GameManager : Singleton<GameManager>
     public CanvasController canvasController;
     public bool isInput = true, isTimeCheck = false;
     private float oneSecond =0;
+    public float Cool_time = 2;
+    bool isPlay = false;
     private void Start()
     {
         SoundManager.instance.PlaySfx(SoundManager.Sfx.Start);
@@ -26,6 +29,8 @@ public class GameManager : Singleton<GameManager>
     public void Update()
     {
         IngameTimer();
+        if (isPlay)
+            Cool_time -= Time.deltaTime;
     }
     public void StartTimer()
     {
@@ -37,7 +42,18 @@ public class GameManager : Singleton<GameManager>
     {
         if (!isTimeCheck)
             return;
-
+        if (inGameTimer == 60)
+        {
+            isPlay = true;
+            canvasController.notice.gameObject.SetActive(true);
+            canvasController.notice.text = "Hurry Up";
+        }
+        if (Cool_time < 0)
+        {
+            canvasController.notice.gameObject.SetActive(false);
+            Cool_time = 2f;
+            isPlay = false;
+        }
         if (oneSecond <= 0)
         {
             oneSecond = 1;

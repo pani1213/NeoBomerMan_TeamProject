@@ -39,7 +39,7 @@ public class Item : MonoBehaviour
             else if (IType == ItemType.Speed)
             {
                 if (playerMove._speed < speedMaxCount)
-                    playerMove._speed++;
+                    playerMove._speed += 0.5f;
             }
             else if (IType == ItemType.Time)
             {
