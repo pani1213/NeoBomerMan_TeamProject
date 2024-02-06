@@ -23,8 +23,8 @@ public class GameManager : Singleton<GameManager>
     bool isPlay = false;
     private void Start()
     {
-        SoundManager.instance.PlaySfx(SoundManager.Sfx.Start);
-        SoundManager.instance.PlayBgm(true);
+        SoundManager.instance.PlaySfx(SoundManager.Sfx.start);
+        SoundManager.instance.PlayBgm(SoundManager.Bgm.town);
     }
     public void Update()
     {

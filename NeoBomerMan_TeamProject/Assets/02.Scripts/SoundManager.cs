@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static SoundManager;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioClip BgmClip;
+    public AudioClip[] BgmClips;
     public float BgmVolume;
     AudioSource BgmPlayer;
 
@@ -15,7 +16,8 @@ public class SoundManager : MonoBehaviour
     AudioSource[] SfxPlayer;
     int channelIndex;
 
-    public enum Sfx { Start, SetBomb, }
+    public enum Bgm { town, underwater }
+    public enum Sfx { start, explosion, setbomb }
 
     public static SoundManager instance;
     private void Awake()
@@ -33,7 +35,6 @@ public class SoundManager : MonoBehaviour
         BgmPlayer.playOnAwake = false;
         BgmPlayer.loop = true;
         BgmPlayer.volume = BgmVolume;
-        BgmPlayer.clip = BgmClip;
 
         GameObject SfxObject = new GameObject("SfxPlayer");
         SfxObject.transform.parent = transform;
@@ -46,17 +47,10 @@ public class SoundManager : MonoBehaviour
             SfxPlayer[i].volume = SfxVolume;
         }
     }
-
-    public void PlayBgm(bool isPlay)
+    public void PlayBgm(Bgm bgm)
     {
-        if (isPlay)
-        {
-            BgmPlayer.Play();
-        }
-        else
-        {
-            BgmPlayer.Stop();
-        }
+        BgmPlayer.clip = BgmClips[(int)bgm];
+        BgmPlayer.Play();
     }
 
     public void PlaySfx (Sfx sfx)
