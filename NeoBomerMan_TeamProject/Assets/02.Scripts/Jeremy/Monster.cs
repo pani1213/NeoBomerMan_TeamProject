@@ -172,7 +172,7 @@ public class Monster : MonoBehaviour
             RushTime = 1.5f;
             moveSpeed = 1;
         }
-        if (collision.CompareTag("Bicek"))
+        if (collision.CompareTag("Brick"))
         {
             RushTime = 1.5f;
             moveSpeed = 1;
