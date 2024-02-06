@@ -14,7 +14,6 @@ public class BoomEffectController : MonoBehaviour
     public BlockType blockType = BlockType.none;
     public GameObject destroyBrick = null;
     public Action action;
-
     public bool isfire = false;
     public void InIt(Action _action = null)
     {

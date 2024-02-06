@@ -31,7 +31,6 @@ public class PlayerMove : MonoBehaviour
             animator.SetFloat("Horizontal", h);
             animator.SetFloat("Vertical", v);
         }
-
     }
     private void FixedUpdate()
     {
@@ -41,16 +40,18 @@ public class PlayerMove : MonoBehaviour
     public void PlayerDie()
     {
         player.PlayerHealth--;
+        if (player.PlayerHealth <= -1)
+            Debug.Log("처음부터");
         animation.Play("PlayerDie");
         GameManager.instance.isInput = false;
         _rigidbody.velocity = Vector2.zero;
-        player.PlayerHealth--;
         playerCollider.enabled = false;
         StartCoroutine(PlayerRespawn());
     }
     IEnumerator PlayerRespawn()
     {
         yield return new WaitForSeconds(1.2f);
+        GameManager.instance.SetLife();
         Debug.Log("살아남");
         GameManager.instance.isInput = true;
         player.gameObject.transform.position = new Vector2(-6f, 4.5f);

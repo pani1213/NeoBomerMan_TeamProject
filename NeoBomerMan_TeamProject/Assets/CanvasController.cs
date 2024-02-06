@@ -15,6 +15,8 @@ public class CanvasController : MonoBehaviour
 
         GameManager.instance.SetScoer(0);
         life.text = GameManager.instance.playerLife.ToString();
-        timer.text = GameManager.instance.gameTimer;
+        GameManager.instance.isTimeCheck = true;
+        GameManager.instance.StartTimer();
+        //timer.text = GameManager.instance.gameTimer;
     }
 }
