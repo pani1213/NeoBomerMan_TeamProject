@@ -35,12 +35,7 @@ public class Monster : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
         else
-            Rush();
             SearchDirection();
-
-        if (Input.GetKeyDown(KeyCode.Q))
-            MonsterDie();
-        
     }
     private void SearchDirection()
     {
@@ -167,16 +162,5 @@ public class Monster : MonoBehaviour
         {
             GameManager.instance.playerMove.PlayerDie();
         }
-        if (collision.CompareTag("Block"))
-        {
-            RushTime = 1.5f;
-            moveSpeed = 1;
-        }
-        if (collision.CompareTag("Brick"))
-        {
-            RushTime = 1.5f;
-            moveSpeed = 1;
-        }
-
     }
 }

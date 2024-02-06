@@ -35,7 +35,6 @@ public class TitleAnimation : MonoBehaviour
         isPlayRotate = true;
         yield return new WaitForSeconds(1);
         isPlayAni = true;
-
     }
     void Update()
     {
