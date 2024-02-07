@@ -26,6 +26,7 @@ public class Item : MonoBehaviour
             playerMove = otherCollider.GetComponent<PlayerMove>();
             player = otherCollider.GetComponent<Player>();
 
+            SoundManager.instance.PlaySfx(SoundManager.Sfx.item);
             if (IType == ItemType.BombPower)
             {
                 if (playerFire.BombPower < boomMaxCount)
@@ -36,7 +37,6 @@ public class Item : MonoBehaviour
             {
                 playerFire.MaxBombCount++;
                 playerFire.BombCount = playerFire.MaxBombCount;
-                Debug.Log(playerFire.MaxBombCount);
                 GameManager.instance.SetCanvasState();
             }
             else if (IType == ItemType.Speed)

@@ -33,9 +33,13 @@ public class Monster : MonoBehaviour
 
         if (targetPosition != (Vector2)transform.position && !isAniPlay)
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-
         else
             SearchDirection();
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            MonsterDie();
+        }
     }
     private void SearchDirection()
     {
@@ -133,7 +137,7 @@ public class Monster : MonoBehaviour
 
     public void MonsterDie()
     {
-        
+        SoundManager.instance.PlaySfx(SoundManager.Sfx.zombieDie);
         StartCoroutine(MonsterDieAction());
     }
     IEnumerator MonsterDieAction()
@@ -145,7 +149,7 @@ public class Monster : MonoBehaviour
         }
         GameManager.instance.SetScoer(100);
         isAniPlay = true;
-        myAnimation.Play("MonsterDie");
+        myAnimation.Play("MonsterDied");
         yield return new WaitForSeconds(1);
         gameObject.SetActive(false);
    

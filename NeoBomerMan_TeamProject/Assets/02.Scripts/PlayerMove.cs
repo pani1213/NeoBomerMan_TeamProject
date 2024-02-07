@@ -41,13 +41,28 @@ public class PlayerMove : MonoBehaviour
     {
         player.PlayerHealth--;
         if (player.PlayerHealth <= -1)
-            Debug.Log("처음부터");
+        {
+            GameManager.instance.canvasController.gameOver.SetActive(true);
+            GameManager.instance.isInput = false;
+            StartCoroutine(OneSecond());
+        }
         myAnimation.Play("PlayerDie");
         GameManager.instance.isInput = false;
+        if (GameManager.instance.isHurry)
+        { 
+            SoundManager.instance.PlayBgm(SoundManager.Bgm.ingame);
+            GameManager.instance.isHurry = false;
+        }
         GameManager.instance.StartTimer();
         _rigidbody.velocity = Vector2.zero;
         playerCollider.enabled = false;
+        if(player.PlayerHealth >= 0)
         StartCoroutine(PlayerRespawn());
+    }
+    IEnumerator OneSecond()
+    {
+        yield return new WaitForSeconds(2);
+        GameManager.instance.isGameOver = true;
     }
     IEnumerator PlayerRespawn()
     {

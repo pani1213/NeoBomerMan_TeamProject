@@ -18,12 +18,15 @@ public class StageDoor : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            SoundManager.instance.PlaySfx(SoundManager.Sfx.StageClear);
             GameManager.instance.GetPlayerState();
-            Scene scene = SceneManager.GetActiveScene();
-            int sceneindex = scene.buildIndex;
-            SceneManager.LoadScene(++sceneindex);
-        }
-    }
 
-   
+            GameManager.instance.isInput = false;
+            GameManager.instance.playerMove.myAnimation.Play("PlayerDie");
+            GameManager.instance.isTimeCheck = false;
+            GameManager.instance.StartCoroutine(GameManager.instance.SetScoreBord());
+
+        }
+    }   
+    
 }

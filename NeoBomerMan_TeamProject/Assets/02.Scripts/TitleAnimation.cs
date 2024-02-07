@@ -38,7 +38,7 @@ public class TitleAnimation : MonoBehaviour
     }
     void Update()
     {
-        if (Input.anyKeyDown && isPlayAni)
+        if (Input.anyKeyDown)// && isPlayAni)
         { 
             GameManager.instance.ButtonActionNextScene();
         }

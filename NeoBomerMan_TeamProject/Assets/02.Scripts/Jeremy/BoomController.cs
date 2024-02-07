@@ -56,6 +56,7 @@ public class BoomController : MonoBehaviour
     {
         if (!_isNow)
             yield return new WaitForSeconds(2);
+        SoundManager.instance.PlaySfx(SoundManager.Sfx.bomb);
         boomImage.SetActive(false);
         myParticle.Play();
         //
@@ -106,6 +107,7 @@ public class BoomController : MonoBehaviour
             _boomEffecter[fireContainer[_direction].fireRange].boomparticle.Play();
             MakeItem(_boomEffecter[fireContainer[_direction].fireRange].destroyBrick);
             Destroy(_boomEffecter[fireContainer[_direction].fireRange].destroyBrick);
+            SoundManager.instance.PlaySfx(SoundManager.Sfx.brick);
         }
     }
     private void SetBoomRange()

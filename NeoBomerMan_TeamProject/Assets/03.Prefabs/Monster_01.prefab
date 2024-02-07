@@ -176,6 +176,7 @@ MonoBehaviour:
   myPosition: {x: 0, y: 0}
   targetPosition: {x: 0, y: 0}
   myAnimation: {fileID: 6315675701351778404}
+  stageDoor: {fileID: 0}
 --- !u!95 &71028000678856244
 Animator:
   serializedVersion: 5
@@ -206,9 +207,9 @@ Animation:
   m_GameObject: {fileID: 5933722488817574186}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: fceb5af6f5c6d5940a45c7c9386c6f0f, type: 2}
+  m_Animation: {fileID: 7400000, guid: ffd0e83c61ed17e4ab1cb9924b801ced, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: fceb5af6f5c6d5940a45c7c9386c6f0f, type: 2}
+  - {fileID: 7400000, guid: ffd0e83c61ed17e4ab1cb9924b801ced, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0

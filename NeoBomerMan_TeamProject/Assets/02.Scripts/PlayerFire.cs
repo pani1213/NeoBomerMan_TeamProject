@@ -29,7 +29,7 @@ public class PlayerFire : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && BombCount > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && BombCount > 0 && GameManager.instance.isInput)
         {
             BombCount--;
             // 플레이어 위치 기준  x: 반올림   y: 내림 + 0.5
