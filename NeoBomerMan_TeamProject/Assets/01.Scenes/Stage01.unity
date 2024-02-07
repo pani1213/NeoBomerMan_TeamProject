@@ -19630,6 +19630,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 16217210814409666, guid: d0383efd6f496254b9f8dc563baa7d83, type: 3}
+      propertyPath: Bgm
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5198360165048496603, guid: d0383efd6f496254b9f8dc563baa7d83, type: 3}
       propertyPath: m_Name
       value: StageController

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -13,11 +14,12 @@ public class PlayerMove : MonoBehaviour
     public Animation myAnimation;
     public CircleCollider2D playerCollider;
     Player player;
+
+    bool isDie = false;
     void Start()
     {
         myAnimation.clip.legacy = true;
         player = GetComponent<Player>();
-        //_speed = player.PlayerSpeed;
         _rigidbody = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -39,6 +41,9 @@ public class PlayerMove : MonoBehaviour
     }
     public void PlayerDie()
     {
+        if (isDie)
+            return;
+        isDie = true;
         player.PlayerHealth--;
         if (player.PlayerHealth <= -1)
         {
@@ -68,10 +73,10 @@ public class PlayerMove : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
         GameManager.instance.SetLife();
-        Debug.Log("»ì¾Æ³²");
         GameManager.instance.isInput = true;
         player.gameObject.transform.position = new Vector2(-6f, 4.5f);
         playerCollider.enabled = true;
         player.transform.localScale = Vector2.one;
+        isDie = false;
     }
 }

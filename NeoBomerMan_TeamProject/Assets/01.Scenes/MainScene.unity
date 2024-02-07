@@ -355,6 +355,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 784a3a4314a00b94d91cb082b4cee0b1, type: 3}
   - {fileID: 8300000, guid: ca391ce727aa7ea41990af79411cf1cd, type: 3}
   - {fileID: 8300000, guid: 5335e44b72728c14d804b1a433e17264, type: 3}
+  - {fileID: 8300000, guid: 3a9f9c4f49d53914dac9fe24611f54c4, type: 3}
   BgmVolume: 0.8
   SfxClips:
   - {fileID: 8300000, guid: ab341867aca638f49a551e9c942da2e5, type: 3}
@@ -986,6 +987,8 @@ MonoBehaviour:
   isInput: 1
   isTimeCheck: 0
   Cool_time: 2
+  isHurry: 0
+  isGameOver: 0
 --- !u!4 &2072900566
 Transform:
   m_ObjectHideFlags: 0

@@ -61,6 +61,10 @@ public class BoomEffectController : MonoBehaviour
             collision.GetComponent<Monster>().MonsterDie();
             collision.GetComponent<BoxCollider2D>().enabled = false;
         }
+        if (collision.CompareTag("Boss") && isfire)
+        {
+            collision.GetComponent<BossController>().BossHitAction();
+        }
     }
 
 }

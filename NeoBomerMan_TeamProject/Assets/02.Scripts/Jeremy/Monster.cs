@@ -14,6 +14,9 @@ public class Monster : MonoBehaviour
     public Animation myAnimation;
     public StageDoor stageDoor;
 
+
+    LayerMask layerMask;
+
     private RaycastHit2D hit;
     private RaycastHit2D detection;
     private float RushTime = 1.5f;
@@ -23,6 +26,7 @@ public class Monster : MonoBehaviour
 
     private void Start()
     {
+        layerMask = 1 <<  (LayerMask.NameToLayer("Block")); 
         isAniPlay = false;
         myAnimation.clip.legacy = true;
         targetPosition = transform.position;
@@ -66,7 +70,7 @@ public class Monster : MonoBehaviour
 
     private void SearchProcess(Vector2 _dir,Direction _direction)
     {
-        hit = Physics2D.Raycast(myPosition, _dir, 15f);
+        hit = Physics2D.Raycast(myPosition, _dir, 15f, layerMask);
         if (hit.collider != null)
         {
             float distance = Vector2.Distance(myPosition, hit.collider.transform.position);

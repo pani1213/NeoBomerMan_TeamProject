@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6536225791375356294}
   - component: {fileID: 6140345053125386161}
   - component: {fileID: 4598149903463679640}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -200,6 +200,9 @@ MonoBehaviour:
   BombCount: 1
   GloveItem: 0
   ShoeItem: 0
+  LayerMask:
+    serializedVersion: 2
+    m_Bits: 4
   PoolSize: 10
   _bombPool: []
 --- !u!95 &6140345053125386161

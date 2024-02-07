@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3237448544843341273}
   - component: {fileID: 3942874349241929334}
   - component: {fileID: 6155991274835130067}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Door
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -146,3 +146,4 @@ MonoBehaviour:
   myCollider: {fileID: 3942874349241929334}
   doorOpen: {fileID: -68304135, guid: 503db7f12c454034a9dbf3044f368e2e, type: 3}
   mySpriteRanderer: {fileID: 3237448544843341273}
+  openScore: 4

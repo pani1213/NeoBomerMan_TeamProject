@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoomEffect Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
+      propertyPath: m_TagString
+      value: BoomEffect
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -133,14 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a56d9e2d63ce9f44bb1b3d182998e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boomIndex: 0
-  mydirection: 0
-  boomController: {fileID: 0}
-  childEffect: {fileID: 0}
-  myCollider: {fileID: 6377910124925152033}
   boomparticle: {fileID: 3280770005549291045}
-  isBlock: 0
-  isBrick: 0
+  myCollider: {fileID: 6377910124925152033}
+  mydirection: 0
+  blockType: 0
+  destroyBrick: {fileID: 0}
+  isfire: 0
 --- !u!61 &6377910124925152033
 BoxCollider2D:
   m_ObjectHideFlags: 0

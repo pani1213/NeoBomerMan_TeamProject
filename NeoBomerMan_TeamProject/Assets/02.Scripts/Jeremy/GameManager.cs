@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class GameManager : Singleton<GameManager>
 {
     public int playerLife = 2, playerBoomRange = 1, playerBoomCount = 1, gameScore = 0,stageScore = 0,scoreBordBonus = 0;
-    public float player_speed = 200;
+    public float player_speed = 1;
     private float inGameTimer = 120, maxGameCount = 120;
     
     public string gameTimer = "";
@@ -50,8 +50,15 @@ public class GameManager : Singleton<GameManager>
             playerBoomCount = 1;
             gameScore = 0;
             stageScore = 0;
+            player_speed = 1;
             scoreBordBonus = 0;
             SceneManager.LoadScene(1);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            int sceneindex = scene.buildIndex;
+            SceneManager.LoadScene(++sceneindex);
         }
     }
     public void FindCanvas()
@@ -120,10 +127,27 @@ public class GameManager : Singleton<GameManager>
         yield return new WaitForSeconds(1);
         stageScore += scoreBordBonus;
         canvasController.scoreBordTotal.text = stageScore.ToString();
+        if (stageScore <= 28000)
+        {
+            Debug.Log(stageScore);
+            canvasController.bombImage.sprite = canvasController.bombSprite[0];
+        }
+        else if (stageScore <= 31000)
+        { 
+            Debug.Log(stageScore);
+            canvasController.bombImage.sprite = canvasController.bombSprite[1];
+        }
+        else
+        {
+            Debug.Log(stageScore);
+            canvasController.bombImage.sprite = canvasController.bombSprite[2];
+        }
         SetScoer(stageScore);
         scoreBordBonus = 0;
         stageScore = 0;
         canvasController.scoreBordBonus.text = scoreBordBonus.ToString();
+        yield return new WaitForSeconds(1);
+        canvasController.bombImage.gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         isNextStage = true;
 

@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour
     AudioSource[] SfxPlayer;
     int channelIndex;
 
-    public enum Bgm { alarm, ending, hurryUp,ingame,Title,victory}
+    public enum Bgm { alarm, ending, hurryUp,ingame,Title,victory,boss}
     public enum Sfx { bomb,brick,explosion,item,playerDie,robotDie,StageClear,zombieDie }
 
     public static SoundManager instance;
