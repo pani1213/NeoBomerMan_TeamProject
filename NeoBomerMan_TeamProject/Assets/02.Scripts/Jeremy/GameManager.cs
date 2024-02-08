@@ -25,11 +25,6 @@ public class GameManager : Singleton<GameManager>
 
     public void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            SoundManager.instance.PlaySfx(SoundManager.Sfx.brick);
-        }
         IngameTimer();
         if (isPlay)
             Cool_time -= Time.deltaTime;
@@ -43,16 +38,17 @@ public class GameManager : Singleton<GameManager>
         }
         if (Input.anyKeyDown && isGameOver)
         {
-            isGameOver = false;
-            isInput = true;
-            playerLife = 2;
-            playerBoomRange = 1;
-            playerBoomCount = 1;
-            gameScore = 0;
-            stageScore = 0;
-            player_speed = 1;
-            scoreBordBonus = 0;
-            SceneManager.LoadScene(1);
+            //isGameOver = false;
+            //isInput = true;
+            //playerLife = 2;
+            //playerBoomRange = 1;
+            //playerBoomCount = 1;
+            //gameScore = 0;
+            //stageScore = 0;
+            //player_speed = 1;
+            //scoreBordBonus = 0;
+            //SceneManager.LoadScene(1);
+            Restart();
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -60,6 +56,13 @@ public class GameManager : Singleton<GameManager>
             int sceneindex = scene.buildIndex;
             SceneManager.LoadScene(++sceneindex);
         }
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+        Destroy(SoundManager.instance.gameObject);
+        Destroy(gameObject);
+
     }
     public void FindCanvas()
     {

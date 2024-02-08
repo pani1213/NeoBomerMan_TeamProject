@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
@@ -11,19 +12,22 @@ public class EndingText : MonoBehaviour
     public List<string> texts = new List<string>();
     public float Speed = 1f;
     int textIndex = 0;
-    bool textLoop = true;
+    bool textLoop = true, isRestart = false;
 
-    void Start()
-    {
-        for (int i = 0; i < TextList.Length; i++)
-        {
-            texts.Add(string.Empty);
-        }
-        
-    }
-
+   void Start()
+   {
+       for (int i = 0; i < 3; i++)
+       {
+           texts.Add(string.Empty);
+       }
+       
+   }
     void Update()
     {
+        if (isRestart && Input.anyKeyDown)
+        {
+            GameManager.instance.Restart();
+        }
         if (textLoop)
         {
             foreach(Text t in TextList)
@@ -40,6 +44,8 @@ public class EndingText : MonoBehaviour
                     if (texts.Count - 1 > textIndex)
                     {
                         textIndex++;
+                        if (textIndex == texts.Count - 1)
+                            StartCoroutine(Restart());
                     }
                     else
                     {
@@ -48,5 +54,11 @@ public class EndingText : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator Restart()
+    {
+        yield return new WaitForSeconds(3);
+        isRestart = true;
     }
 }
