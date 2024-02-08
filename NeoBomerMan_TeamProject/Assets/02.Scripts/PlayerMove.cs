@@ -43,6 +43,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (isDie)
             return;
+        SoundManager.instance.PlaySfx(SoundManager.Sfx.playerDie);
         isDie = true;
         player.PlayerHealth--;
         if (player.PlayerHealth <= -1)

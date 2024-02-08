@@ -23,6 +23,11 @@ public class GameManager : Singleton<GameManager>
     private bool isPlay = false , isNextStage = false;
     public bool isHurry = false, isGameOver = false;
 
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+        Screen.SetResolution(1366, 768, false);
+    }
     public void Update()
     {
         IngameTimer();

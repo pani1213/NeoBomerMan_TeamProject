@@ -1,11 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.ParticleSystem;
 public enum Direction { none, up, down, left, right }
 public enum BlockType { none, block,brick }
 public class BoomController : MonoBehaviour
@@ -75,9 +71,9 @@ public class BoomController : MonoBehaviour
         BoomDirectionProcess(Direction.down, BoomEffectsDown);
         BoomDirectionProcess(Direction.left, BoomEffectsLeft);
         BoomDirectionProcess(Direction.right, BoomEffectsRight);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         DisEnabledCollider();
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.5f);
         StopCoroutine(StartBoom());
         gameObject.SetActive(false);
         GameManager.instance.playerFire.BombCount++;
