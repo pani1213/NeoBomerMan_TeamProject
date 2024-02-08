@@ -46,6 +46,13 @@ public class BoomController : MonoBehaviour
         for (int i = 0; i < BoomEffectsRight.Count; i++) BoomEffectsRight[i].InIt(DisAbleEffectCollider);
         StartCoroutine(StartBoom());
     }
+    private void DisEnabledCollider()
+    {
+        for (int i = 0; i < BoomEffectsUp.Count; i++) BoomEffectsUp[i].myCollider.enabled = false;
+        for (int i = 0; i < BoomEffectsDown.Count; i++) BoomEffectsDown[i].myCollider.enabled = false;
+        for (int i = 0; i < BoomEffectsLeft.Count; i++) BoomEffectsLeft[i].myCollider.enabled = false;
+        for (int i = 0; i < BoomEffectsRight.Count; i++) BoomEffectsRight[i].myCollider.enabled = false;
+    }
     public void DisAbleEffectCollider()
     {
         if (actionCount > 0)
@@ -68,7 +75,9 @@ public class BoomController : MonoBehaviour
         BoomDirectionProcess(Direction.down, BoomEffectsDown);
         BoomDirectionProcess(Direction.left, BoomEffectsLeft);
         BoomDirectionProcess(Direction.right, BoomEffectsRight);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
+        DisEnabledCollider();
+        yield return new WaitForSeconds(0.8f);
         StopCoroutine(StartBoom());
         gameObject.SetActive(false);
         GameManager.instance.playerFire.BombCount++;
